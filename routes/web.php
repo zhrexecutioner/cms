@@ -99,3 +99,4 @@ Route::get('/goods/{goods_id}','Goods\IndexController@index');          //商品
 
 //订单
 Route::get('/order/add','Order\IndexController@add');           //下单
+Route::get('/show','Goods\IndexController@list');
