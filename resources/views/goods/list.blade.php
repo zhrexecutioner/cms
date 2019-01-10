@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-</head>
-<body>
-	<table border="1">
+@extends('layouts.bst')
+
+@section('content')
+<table>
 		<tr>
 			<td>商品名称</td>
 			<td>商品库存</td>
@@ -21,9 +17,10 @@
 		</tr>
 		@endforeach
 	</table>
-	<a href="/cart">进入购物车</a>
-</body>
-</html>
-<script>
-	function 
-</script>
+	<a href="/cart" class="btn btn-primary" id="add_cart_btn">进入购物车</a>
+@endsection
+
+@section('footer')
+    @parent
+    <script src="{{URL::asset('/js/goods/goods.js')}}"></script>
+@endsection
