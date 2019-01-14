@@ -100,3 +100,7 @@ Route::get('/goods/{goods_id}','Goods\IndexController@index');          //商品
 //订单
 Route::get('/order/add','Order\IndexController@add');           //下单
 Route::get('/show','Goods\IndexController@list');
+
+Route::get('/payTest/{oid}','Pay\AlipayController@test');         //测试
+Route::get('/pay/o/{oid}','Pay\IndexController@order');         //订单支付
+Route::post('/payNotify','Pay\AlipayController@notify');        //支付宝支付 通知回调

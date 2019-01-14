@@ -17,7 +17,7 @@
 		</tr>
 		@endforeach
 	</table>
-	<a href="/cart" class="btn btn-primary" id="add_cart_btn">进入购物车</a>
+	<a href="/cart">进入购物车</a>
 @endsection
 
 @section('footer')
