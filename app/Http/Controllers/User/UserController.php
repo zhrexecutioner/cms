@@ -150,5 +150,9 @@ class UserController extends Controller
             echo 'UID: '.$_COOKIE['uid'] . ' 欢迎回来';
         }
     }
+    public function movie()
+    {
+        return view('users.movie');
+    }
 
 }

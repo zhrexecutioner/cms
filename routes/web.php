@@ -68,6 +68,11 @@ Route::get('/user/login','User\UserController@login');           //用户登录
 Route::post('/user/login','User\UserController@doLogin');        //用户登录
 Route::get('/user/center','User\UserController@center');        //个人中心
 
+Route::get('/users/login','Users\UsersController@login');           //用户登录
+Route::post('/users/login','Users\UsersController@dologin');
+Route::get('/users/update','Users\UsersController@update');
+Route::post('/users/update','Users\UsersController@doupdate');
+Route::get('/movie','User\UserController@movie');
 
 //模板引入静态文件
 Route::get('/mvc/test1','Mvc\MvcController@test1');
@@ -104,3 +109,13 @@ Route::get('/show','Goods\IndexController@list');
 Route::get('/payTest/{oid}','Pay\AlipayController@test');         //测试
 Route::get('/pay/o/{oid}','Pay\IndexController@order');         //订单支付
 Route::post('/payNotify','Pay\AlipayController@notify');        //支付宝支付 通知回调
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/weixin/test','Weixin\WeixinController@test');
+Route::get('/weixin/valid','Weixin\WeixinController@validToken');
+Route::get('/weixin/valid1','Weixin\WeixinController@validToken1');
+Route::post('/weixin/valid1','Weixin\WeixinController@wxEvent');        //接收微信服务器事件推送
+Route::post('/weixin/valid','Weixin\WeixinController@validToken');

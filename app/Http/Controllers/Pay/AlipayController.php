@@ -59,6 +59,7 @@ class AlipayController extends Controller
             'timestamp'   => date('Y-m-d H:i:s'),
             'version'   => '1.0',
             'notify_url'   => $this->notify_url,
+            'return_url'   => $this->return_url,
             'biz_content'   => json_encode($bizcont),
         ];
 
@@ -146,5 +147,34 @@ class AlipayController extends Controller
 
 
         return $data;
+    }
+    public function return()
+    {
+        echo '支付成功';
+    }
+    public function notify()
+    {
+        $data = json_encode($_POST);
+        $log_str = '>>>> '.date('Y-m-d H:i:s') . $data . "<<<<\n\n";
+        //记录日志
+        file_put_contents('logs/alipay.log',$log_str,FILE_APPEND);
+        //验签
+        $res = $this->verify($_POST);
+
+        $log_str = '>>>> ' . date('Y-m-d H:i:s');
+        if($res === false){
+            //记录日志 验签失败
+            $log_str .= " Sign Failed!<<<<< \n\n";
+            file_put_contents('logs/alipay.log',$log_str,FILE_APPEND);
+        }else{
+            $log_str .= " Sign OK!<<<<< \n\n";
+            file_put_contents('logs/alipay.log',$log_str,FILE_APPEND);
+        }
+        $this->aaa($_POST);
+        echo 'success';
+    }
+    public function aaa()
+    {
+        
     }
 }
