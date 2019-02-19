@@ -165,9 +165,9 @@ class WeixinController extends Controller
             ],
         ];
 
-
+        $body = json_encode($data,JSON_UNESCAPED_UNICODE);
         $r = $client->request('POST', $url, [
-            'body' => json_encode($data)
+            'body' => $body
         ]);
 
         // 3 解析微信接口返回信息
