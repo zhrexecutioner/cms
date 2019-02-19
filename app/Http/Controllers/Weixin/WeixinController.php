@@ -41,6 +41,14 @@ class WeixinController extends Controller
         $event = $xml->Event;                               //事件类型
         $openid = $xml->FromUserName;                       //用户openid
         //var_dump($xml);echo '<hr>';
+        if(isset($xml->MsgType)){
+            if($xml->MsgType=='text'){            //用户发送文本消息
+                $msg = $xml->Content;
+                $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
+                echo $xml_response;
+                exit();
+            }
+        }
 
         if($event=='subscribe'){               
             $sub_time = $xml->CreateTime;               //扫码关注时间
@@ -87,7 +95,7 @@ class WeixinController extends Controller
         $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
         echo $xml_response;
 
-        
+
     }
 
 
