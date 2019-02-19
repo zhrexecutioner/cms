@@ -72,8 +72,8 @@ class WeixinController extends Controller
                 var_dump($id);
             }
         }elseif($event=='CLICK'){               //click 菜单
-            if($xml->EventKey=='time'){
-                $this->time($openid,$xml->ToUserName);
+            if($xml->EventKey=='kefu01'){
+                $this->kefu01($openid,$xml->ToUserName);
             }
         }
 
@@ -81,7 +81,7 @@ class WeixinController extends Controller
         file_put_contents('logs/wx_event.log',$log_str,FILE_APPEND);
     }
 
-    public function time($openid,$from)
+    public function kefu01($openid,$from)
     {
         // 文本消息
         $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. 'Hello World, 现在时间'. date('Y-m-d H:i:s') .']]></Content></xml>';
@@ -160,7 +160,7 @@ class WeixinController extends Controller
                 [
                     "type"  => "click",      // click类型
                     "name"  => "当前时间",
-                    "key"   => "time"
+                    "key"   => "kefu01"
                 ]
             ],
         ];
