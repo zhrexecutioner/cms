@@ -13,5 +13,6 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('/wxuser',WeixinController::class);
     //aaa
+    //bbb
 
 });
