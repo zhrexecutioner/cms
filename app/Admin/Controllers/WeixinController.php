@@ -31,7 +31,11 @@ class WeixinController extends Controller
     /**
      * Show interface.
      *
+<<<<<<< HEAD
      * @param mixed $id
+=======
+     * @param mixed   $id
+>>>>>>> a2ce9fd9863b6a12cbb9195d6887d85525c3f3ec
      * @param Content $content
      * @return Content
      */
@@ -46,7 +50,11 @@ class WeixinController extends Controller
     /**
      * Edit interface.
      *
+<<<<<<< HEAD
      * @param mixed $id
+=======
+     * @param mixed   $id
+>>>>>>> a2ce9fd9863b6a12cbb9195d6887d85525c3f3ec
      * @param Content $content
      * @return Content
      */
@@ -88,7 +96,11 @@ class WeixinController extends Controller
         $grid->nickname('Nickname');
         $grid->sex('Sex');
         $grid->headimgurl('Headimgurl')->display(function ($img_url){
+<<<<<<< HEAD
         return '<img src="'.$img_url.'">';
+=======
+            return '<img src="'.$img_url.'">';
+>>>>>>> a2ce9fd9863b6a12cbb9195d6887d85525c3f3ec
         });
         $grid->subscribe_time('Subscribe time');
 
@@ -98,7 +110,11 @@ class WeixinController extends Controller
     /**
      * Make a show builder.
      *
+<<<<<<< HEAD
      * @param mixed $id
+=======
+     * @param mixed   $id
+>>>>>>> a2ce9fd9863b6a12cbb9195d6887d85525c3f3ec
      * @return Show
      */
     protected function detail($id)
