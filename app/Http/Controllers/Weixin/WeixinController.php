@@ -65,7 +65,7 @@ class WeixinController extends Controller
                 if(1){  //下载图片素材
                     $file_name = $this->dlWxImg($xml->MediaId);
                     $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. date('Y-m-d H:i:s') .']]></Content></xml>';
-                    //echo $xml_response;
+                    echo $xml_response;
 
                     //写入数据库
                     $data = [
