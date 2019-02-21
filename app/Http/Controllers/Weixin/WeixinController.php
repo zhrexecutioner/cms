@@ -62,10 +62,10 @@ class WeixinController extends Controller
                 echo $xml_response;
             }elseif($xml->MsgType=='image'){       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
-                // //下载图片素材
+                if(1){  //下载图片素材
                     $file_name = $this->dlWxImg($xml->MediaId);
                     $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. date('Y-m-d H:i:s') .']]></Content></xml>';
-                    echo $xml_response;
+                    //echo $xml_response;
 
                     //写入数据库
                     $data = [
@@ -80,6 +80,7 @@ class WeixinController extends Controller
 
                    $m_id = WeixinMedia::insertGetId($data);
                    var_dump($m_id);
+                }
             }elseif($xml->MsgType=='voice'){        //处理语音信息
                 $this->dlVoice($xml->MediaId);
             }elseif($xml->MsgType=='event'){        //判断事件类型
