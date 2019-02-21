@@ -79,7 +79,7 @@ class WeixinController extends Controller
                     ];
 
                    $m_id = WeixinMedia::insertGetId($data);
-                   var_dump($m_id);
+                   //var_dump($m_id);
                 }
             }elseif($xml->MsgType=='voice'){        //处理语音信息
                 $this->dlVoice($xml->MediaId);
