@@ -12,12 +12,24 @@
 */
 
 Route::get('/', function () {
-    //echo '<pre>';print_r($_SESSION);echo '</pree>';
-    echo '<pre>';print_r($_COOKIE);echo '</pre>';
+    echo __FILE__;echo '</br>';
+    echo date('Y-m-d H:i:s');
+    //echo '<pre>';print_r($_SESSION);echo '</pre>';
+    //echo '<pre>';print_r($_COOKIE);echo '</pre>';
     //return view('welcome');
 });
 
-Route::get('/','Home\IndexController@index');
+Route::group([
+    'prefix'    => '/admin/',
+],function(){
+    return 'aaa';
+});
+
+Route::get('/admin*',function(){
+    return '403';
+});
+
+//Route::get('/','Home\IndexController@index');
 
 Route::get('/info',function(){
     phpinfo();
@@ -35,6 +47,7 @@ Route::get('world2','Test\TestController@world2');
 
 //路由参数
 Route::get('/user/test','User\UserController@test');
+//Route::get('/user/{uid}','User\UserController@user');
 Route::get('/month/{m}/date/{d}','Test\TestController@md');
 Route::get('/name/{str?}','Test\TestController@showName');
 
@@ -66,13 +79,8 @@ Route::post('/user/reg','User\UserController@doReg');
 
 Route::get('/user/login','User\UserController@login');           //用户登录
 Route::post('/user/login','User\UserController@doLogin');        //用户登录
-Route::get('/user/center','User\UserController@center');        //个人中心
+Route::get('/user/center','User\UserController@center')->middleware('check.login.token');        //个人中心
 
-Route::get('/users/login','Users\UsersController@login');           //用户登录
-Route::post('/users/login','Users\UsersController@dologin');
-Route::get('/users/update','Users\UsersController@update');
-Route::post('/users/update','Users\UsersController@doupdate');
-Route::get('/movie','User\UserController@movie');
 
 //模板引入静态文件
 Route::get('/mvc/test1','Mvc\MvcController@test1');
@@ -81,17 +89,31 @@ Route::get('/mvc/bst','Mvc\MvcController@bst');
 
 
 //Test
-Route::get('/test/cookie1','Test\TestController@cookieTest1');
-Route::get('/test/cookie2','Test\TestController@cookieTest2');
-Route::get('/test/session','Test\TestController@sessionTest');
-Route::get('/test/mid1','Test\TestController@mid1')->middleware('check.uid');        //中间件测试
-Route::get('/test/check_cookie','Test\TestController@checkCookie')->middleware('check.cookie');        //中间件测试
+//Route::any('/test/guzzle','Test\TestController@guzzleTest');
+//Route::get('/test/cookie1','Test\TestController@cookieTest1');
+//Route::get('/test/cookie2','Test\TestController@cookieTest2');
+//Route::get('/test/session','Test\TestController@sessionTest');
+//Route::get('/test/mid1','Test\TestController@mid1')->middleware('check.uid');        //中间件测试
+//Route::get('/test/check_cookie','Test\TestController@checkCookie')->middleware('check.cookie');        //中间件测试
+
+Route::middleware(['log.click'])->group(function(){
+    Route::any('/test/guzzle','Test\TestController@guzzleTest');
+    Route::get('/test/cookie1','Test\TestController@cookieTest1');
+    Route::get('/test/cookie2','Test\TestController@cookieTest2');
+    Route::get('/test/session','Test\TestController@sessionTest');
+    Route::get('/test/mid1','Test\TestController@mid1')->middleware('check.uid');        //中间件测试
+    Route::get('/test/check_cookie','Test\TestController@checkCookie')->middleware('check.cookie');
+
+    Route::get('/test/url1','Test\TestController@url1');
+});
+
+Route::get('/test/end','Test\TestController@mid3')->middleware('res.end');
 
 
 
 //购物车
 //Route::get('/cart','Cart\IndexController@index')->middleware('check.uid');
-Route::get('/cart','Cart\IndexController@index')->middleware('check.login.token');
+Route::get('/cart','Cart\IndexController@index');
 Route::get('/cart/add/{goods_id}','Cart\IndexController@add')->middleware('check.login.token');      //添加商品
 Route::post('/cart/add2','Cart\IndexController@add2')->middleware('check.login.token');      //添加商品
 Route::get('/cart/del/{goods_id}','Cart\IndexController@del')->middleware('check.login.token');      //删除商品
@@ -99,28 +121,47 @@ Route::get('/cart/del2/{goods_id}','Cart\IndexController@del2')->middleware('che
 
 
 //商品
-Route::get('/goods/{goods_id}','Goods\IndexController@index');          //商品详情
+Route::get('/goods/detail/{goods_id}','Goods\IndexController@index');          //商品详情
+Route::get('/goods/list','Goods\IndexController@goodsList');          //商品列表
 
 
 //订单
+Route::get('/order/list','Order\IndexController@orderList');           //订单列表
 Route::get('/order/add','Order\IndexController@add');           //下单
-Route::get('/show','Goods\IndexController@list');
 
-Route::get('/payTest/{oid}','Pay\AlipayController@test');         //测试
-Route::get('/pay/o/{oid}','Pay\IndexController@order');         //订单支付
-Route::post('/payNotify','Pay\AlipayController@notify');        //支付宝支付 通知回调
+
+//支付
+Route::get('/pay/alipay/test','Pay\AlipayController@test');         //测试
+Route::get('/pay/o/{oid}','Pay\AlipayController@pay')->middleware('check.login.token');         //订单支付
+Route::post('/pay/alipay/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
+Route::get('/pay/alipay/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
+
+
+Route::get('/crontab/delete_orders','Crontabs\IndexController@deleteOrders');        //删除过期订单
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/weixin/test','Weixin\WeixinController@test');
+
+Route::get('/upload','Goods\IndexController@uploadIndex');
+Route::post('/goods/upload/pdf','Goods\IndexController@uploadPDF');
+
+
+
+//在线订座
+Route::get('/movie/seat','Movie\IndexController@index');
+
+
+//微信
+Route::get('/weixin/refresh_token','Weixin\WeixinController@refreshToken');     //刷新token
+Route::get('/weixin/test/token','Weixin\WeixinController@test');
 Route::get('/weixin/valid','Weixin\WeixinController@validToken');
 Route::get('/weixin/valid1','Weixin\WeixinController@validToken1');
 Route::post('/weixin/valid1','Weixin\WeixinController@wxEvent');        //接收微信服务器事件推送
 Route::post('/weixin/valid','Weixin\WeixinController@validToken');
+Route::get('/weixin/create_menu','Weixin\WeixinController@createMenu');     //创建菜单
 
-Route::get('/weixin/create_menu','Weixin\WeixinController@createMenu');
 
 Route::get('/form/show','Weixin\WeixinController@formShow');     //表单测试
 Route::post('/form/test','Weixin\WeixinController@formTest');     //表单测试
@@ -137,4 +178,9 @@ Route::post('/weixin/material','Weixin\WeixinController@materialTest');     //�
 
 //微信聊天
 Route::get('/weixin/kefu/chat','Weixin\WeixinController@chatView');     //客服聊天
-Route::get('/weixin/chat/get_msg','Weixin\WeixinController@getChatMsg');
+Route::get('/weixin/chat/get_msg','Weixin\WeixinController@getChatMsg');     //获取用户聊天信息
+
+
+
+
+
