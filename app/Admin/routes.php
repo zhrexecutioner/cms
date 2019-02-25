@@ -11,7 +11,11 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+    $router->resource('/users',UsersController::class);
     $router->resource('/wxuser',WeixinController::class);
     $router->resource('/wxmedia',WeixinMediaController::class);
+
+    $router->get('/weixin/sendmsg','WeixinController@sendMsgView');      //
+    $router->post('/weixin/sendmsg','WeixinController@sendMsg');
 
 });

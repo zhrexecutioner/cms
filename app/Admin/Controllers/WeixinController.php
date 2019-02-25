@@ -73,6 +73,26 @@ class WeixinController extends Controller
     }
 
     /**
+     * Make a form builder.
+     *
+     * @return Form
+     */
+    protected function form()
+    {
+        $form = new Form(new WeixinUser);
+
+        $form->number('uid', 'Uid');
+        $form->text('openid', 'Openid');
+        $form->number('add_time', 'Add time');
+        $form->text('nickname', 'Nickname');
+        $form->switch('sex', 'Sex');
+        $form->text('headimgurl', 'Headimgurl');
+        $form->number('subscribe_time', 'Subscribe time');
+
+        return $form;
+    }
+
+    /**
      * Make a grid builder.
      *
      * @return Grid
@@ -118,22 +138,31 @@ class WeixinController extends Controller
     }
 
     /**
-     * Make a form builder.
-     *
-     * @return Form
+     * 消息群发
      */
-    protected function form()
+    public function sendMsgView(Content $content)
     {
-        $form = new Form(new WeixinUser);
+        //return view('admin.weixin.send_msg');
 
-        $form->number('uid', 'Uid');
-        $form->text('openid', 'Openid');
-        $form->number('add_time', 'Add time');
-        $form->text('nickname', 'Nickname');
-        $form->switch('sex', 'Sex');
-        $form->text('headimgurl', 'Headimgurl');
-        $form->number('subscribe_time', 'Subscribe time');
+        return $content
+            ->header('微信')
+            ->description('群发消息')
+            ->body(view('admin.weixin.send_msg'));
+    }
 
-        return $form;
+
+    /**
+     *
+     */
+    public function sendMsg()
+    {
+        //获取用户openid
+        $list = WeixinUser::all()->pluck('openid')->take(10)->toArray();
+
+
+        //群发消息
+
+        echo '<pre>';print_r($list);echo '</pre>';
+        echo '<pre>';print_r($_POST);echo '</pre>';
     }
 }
