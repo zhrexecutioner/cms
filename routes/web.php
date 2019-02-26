@@ -181,6 +181,8 @@ Route::get('/weixin/kefu/chat','Weixin\WeixinController@chatView');     //客服
 Route::get('/weixin/chat/get_msg','Weixin\WeixinController@getChatMsg');     //获取用户聊天信息
 
 
+Route::get('/weixin/pay/test','Weixin\PayController@test');     //微信支付测试
+Route::post('/weixin/pay/notice','Weixin\PayController@notice');     //微信支付
 
 
 
