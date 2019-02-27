@@ -13,7 +13,7 @@
 			<td>{{$v->goods_name}}</td>
 			<td>{{$v->store}}</td>
 			<td>{{$v->price}}</td>
-			<td><a href="/goods/{{$v->goods_id}}">详情</a></td>
+			<td><a href="/goods/detail/{{$v->goods_id}}">详情</a></td>
 		</tr>
 		@endforeach
 	</table>
