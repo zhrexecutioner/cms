@@ -132,7 +132,7 @@ Route::get('/order/add','Order\IndexController@add');           //下单
 
 //支付
 Route::get('/pay/alipay/test','Pay\AlipayController@test');         //测试
-Route::get('/pay/Test/{oid}','Pay\AlipayController@pay')->middleware('check.login.token');         //订单支付
+Route::get('/payTest/{oid}','Pay\AlipayController@pay')->middleware('check.login.token');         //订单支付
 Route::post('/pay/alipay/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
 Route::get('/pay/alipay/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
 
