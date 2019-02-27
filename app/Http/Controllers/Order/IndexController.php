@@ -1,71 +1,89 @@
 <?php
 
-namespace App\Http\Controllers\Goods;
+namespace App\Http\Controllers\Order;
 
+use App\Model\CartModel;
+use App\Model\GoodsModel;
+use App\Model\OrderGoodsModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Model\GoodsModel;
+use App\Model\OrderModel;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
     //
 
-
-    /**
-     * 商品详情
-     * @param $goods_id
-     */
-    public function index($goods_id)
+    public function __construct()
     {
-        $goods = GoodsModel::where(['goods_id'=>$goods_id])->first();
+        $this->middleware('auth');
+    }
 
-        //商品不存在
-        if(!$goods){
-            header('Refresh:2;url=/');
-            echo '商品不存在,正在跳转至首页';
-            exit;
-        }
-
-        
-
-        $data = [
-            'goods' => $goods
-        ];
-        return view('goods.index',$data);
+    public function index()
+    {
+        echo __METHOD__;
     }
 
     /**
-     * 商品列表
+     * 下单
      */
-    public function goodsList()
+    public function add(Request $request)
     {
-        $list = GoodsModel::paginate(5);            //分页
-//echo '<pre>';print_r($list);echo '</pre>';die;
+        //查询购物车商品
+        $cart_goods = CartModel::where(['uid'=>session()->get('uid')])->orderBy('id','desc')->get()->toArray();
+        if(empty($cart_goods)){
+            die("购物车中无商品");
+        }
+        $order_amount = 0;
+        foreach($cart_goods as $k=>$v){
+            $goods_info = GoodsModel::where(['goods_id'=>$v['goods_id']])->first()->toArray();
+            $goods_info['num'] = $v['num'];
+            $list[] = $goods_info;
+
+            //计算订单价格 = 商品数量 * 单价
+            $order_amount += $goods_info['price'] * $v['num'];
+        }
+
+        //echo '<pre>';print_r($list);echo '</pre>';die;
+        $order_sn = OrderModel::generateOrderSN();  //生成订单号
+
+        $data = [
+            'order_sn'      => $order_sn,
+            'uid'           => session()->get('uid'),
+            'add_time'      => time(),
+            'order_amount'  => $order_amount
+        ];
+
+        //写入订单表
+        $oid = OrderModel::insertGetId($data);
+        if(!$oid){
+            echo '生成订单失败';
+        }
+
+        //写入订单商品表
+        foreach($list as $k=>$v){
+            OrderGoodsModel::insert(['goods_id'=>$v['goods_id'],'oid'=>$oid,'price'=>$v['price'],'num'=>$v['num']]);
+        }
+
+
+        echo '下单成功,订单号：'.$oid .' 跳转支付';
+
+
+        //清空购物车
+        CartModel::where(['uid'=>session()->get('uid')])->delete();
+    }
+
+
+    /**
+     * 订单列表
+     */
+    public function orderList()
+    {
+        $list = OrderModel::where(['uid'=>session()->get('uid'),'is_pay'=>0])->orderBy('oid','desc')->get()->toArray();
         $data = [
             'list'  => $list
         ];
-
-        //echo '<pre>';print_r($list);echo '</pre>';die;
-        return view('goods.list',$data);
-    }
-
-    public function uploadIndex()
-    {
-        return view('goods.upload');
-    }
-
-    public function uploadPDF(Request $request)
-    {
-        $pdf = $request->file('pdf');
-        $ext  = $pdf->extension();
-        if($ext != 'pdf'){
-            die("请上传PDF格式");
-        }
-        $res = $pdf->storeAs(date('Ymd'),str_random(5) . '.pdf');
-        if($res){
-            echo '上传成功';
-        }
-
+        return view('orders.list',$data);
     }
 }
