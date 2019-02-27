@@ -27,6 +27,8 @@ class IndexController extends Controller
             exit;
         }
 
+        
+
         $data = [
             'goods' => $goods
         ];
