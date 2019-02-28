@@ -12,11 +12,9 @@
 */
 
 Route::get('/', function () {
-    echo __FILE__;echo '</br>';
-    echo date('Y-m-d H:i:s');
-    //echo '<pre>';print_r($_SESSION);echo '</pre>';
-    //echo '<pre>';print_r($_COOKIE);echo '</pre>';
-    //return view('welcome');
+    //echo __FILE__;echo '</br>';
+    //echo date('Y-m-d H:i:s');
+    return view('welcome');
 });
 
 Route::group([
@@ -132,7 +130,7 @@ Route::get('/order/add','Order\IndexController@add');           //下单
 
 //支付
 Route::get('/pay/alipay/test','Pay\AlipayController@test');         //测试
-Route::get('/payTest/{oid}','Pay\AlipayController@test')->middleware('check.login.token');         //订单支付
+Route::get('/pay/o/{oid}','Pay\AlipayController@pay')->middleware('check.login.token');         //订单支付
 Route::post('/pay/alipay/notify','Pay\AlipayController@aliNotify');        //支付宝支付 异步通知回调
 Route::get('/pay/alipay/return','Pay\AlipayController@aliReturn');        //支付宝支付 同步通知回调
 
@@ -184,6 +182,10 @@ Route::get('/weixin/chat/get_msg','Weixin\WeixinController@getChatMsg');     //�
 //微信支付
 Route::get('/weixin/pay/test','Weixin\PayController@test');     //微信支付测试
 Route::post('/weixin/pay/notice','Weixin\PayController@notice');     //微信支付通知回调
+
+//微信登录
+Route::get('/weixin/login','Weixin\WeixinController@login');        //微信登录
+Route::get('/weixin/getcode','Weixin\WeixinController@getCode');        //接收code
 
 
 
