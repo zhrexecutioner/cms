@@ -522,7 +522,7 @@ class WeixinController extends Controller
 //        $unionid = $user_arr['unionid'];        // 微信用户 unionid
 //        echo '<pre>';print_r($user_arr);echo '</pre>';
         $user_arr = [];
-        $unionid = 'oTm241U1rFq9ZgnmPx3hXhXd-wssa';
+        $unionid = 'of3Hp5jx2SlaOQNRsFIbfobRy0BY';
         //4 获取unionid 查询用户信息
         $u = WeixinUser::where(['unionid'=>$unionid])->first();
         var_dump($u);
