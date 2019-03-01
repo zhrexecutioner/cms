@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Weixin;
 
+use App\Model\UserModel;
 use App\Model\WeixinChatModel;
 use App\Model\WeixinUser;
 use Illuminate\Http\Request;
@@ -70,10 +71,10 @@ class WeixinController extends Controller
 
                 $id = WeixinChatModel::insertGetId($data);
                 var_dump($id);
-                $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
+                //$xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
 
 
-                echo $xml_response;
+                //echo $xml_response;
             }elseif($xml->MsgType=='image'){       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
                 if(1){  //下载图片素材
@@ -459,7 +460,7 @@ class WeixinController extends Controller
     public function chatView()
     {
         $data = [
-            'openid'    => 'of3Hp5jx2SlaOQNRsFIbfobRy0BY'
+            'openid'    => 'oLreB1jAnJFzV_8AGWUZlfuaoQto'
         ];
         return view('weixin.chat',$data);
     }
@@ -486,6 +487,12 @@ class WeixinController extends Controller
         die( json_encode($response));
 
     }
+
+
+    /**
+     * 微信登录测试
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function login()
     {
         return view('weixin.login');
@@ -496,9 +503,89 @@ class WeixinController extends Controller
      */
     public function getCode()
     {
-        echo '<pre>';print_r($_GET);echo '</pre>';
-        $code = $_GET['code'];
-        echo 'code: '.$code;
+//        // 1 获取code
+//        $code = $_GET['code'];
+//
+//        $token_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxe24f70961302b5a5&secret=0f121743ff20a3a454e4a12aeecef4be&code='.$code.'&grant_type=authorization_code';
+//        $token_json = file_get_contents($token_url);
+//        $token_arr = json_decode($token_json,true);
+//
+//        $access_token = $token_arr['access_token'];
+//        $openid = $token_arr['openid'];
+//
+//        // 3 携带token  获取用户信息
+//        $user_info_url = 'https://api.weixin.qq.com/sns/userinfo?access_token='.$access_token.'&openid='.$openid.'&lang=zh_CN';
+//        $user_json = file_get_contents($user_info_url);
+//
+//        $user_arr = json_decode($user_json,true);
+//
+//        $unionid = $user_arr['unionid'];        // 微信用户 unionid
+//        echo '<pre>';print_r($user_arr);echo '</pre>';
+        $user_arr = [];
+        $unionid = 'oTm241U1rFq9ZgnmPx3hXhXd-wssa';
+        //4 获取unionid 查询用户信息
+        $u = WeixinUser::where(['unionid'=>$unionid])->first();
+        var_dump($u);
+        if($u){
+            //TODO 登录逻辑
+
+        }else{
+            // 添加用户表
+            $u_data = [
+                'name'  => 'wx_'.str_random(8),
+            ];
+
+            $uid = UserModel::insertGetId($u_data);
+
+            //添加微信用户表
+            $wx_u_data = [
+                'uid'       => $uid,
+                'openid'    => str_random(16),
+                'add_time'  => time(),
+                //'sex'       => $user_arr['sex'],
+                //'headimgurl'    => $user_arr['headimgurl'],
+                'unionid'   => $unionid
+            ];
+
+            $wx_id = WeixinUser::insertGetId($wx_u_data);
+
+            // 登录
+        }
+
+    }
+
+
+    /**
+     * 微信jssdk 调试
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function jssdkTest()
+    {
+
+        //计算签名
+
+        $jsconfig = [
+            'appid' => env('WEIXIN_APPID_0'),        //APPID
+            'timestamp' => time(),
+            'noncestr'    => str_random(10),
+            'sign'      => $this->wxJsConfigSign()
+        ];
+
+        $data = [
+            'jsconfig'  => $jsconfig
+        ];
+        return view('weixin.jssdk',$data);
+    }
+
+
+    /**
+     * 计算JSSDK sign
+     */
+    public function wxJsConfigSign()
+    {
+
+        $sign = str_random(15);
+        return $sign;
     }
 
 
