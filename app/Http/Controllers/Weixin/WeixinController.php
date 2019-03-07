@@ -102,30 +102,7 @@ class WeixinController extends Controller
             }elseif($xml->MsgType=='event'){        //判断事件类型
 
                 if($event=='subscribe'){                        //扫码关注事件
-                    $sub_time = $xml->CreateTime;               //扫码关注时间
-                    //获取用户信息
-                    $user_info = $this->getUserInfo($openid);
-
-                    //保存用户信息
-                    $u = WeixinUser::where(['openid'=>$openid])->first();
-                    if($u){       //用户不存在
-                        //echo '用户已存在';
-                    }else{
-                        $user_data = [
-                            'openid'            => $openid,
-                            'add_time'          => time(),
-                            'nickname'          => $user_info['nickname'],
-                            'sex'               => $user_info['sex'],
-                            'headimgurl'        => $user_info['headimgurl'],
-                            'subscribe_time'    => $sub_time,
-                        ];
-
-                        $id = WeixinUser::insertGetId($user_data);      //保存用户信息
-                        //var_dump($id);
-                    }
-                      // 文本消息
-        $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$from.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. '欢迎关注！'.']]></Content></xml>';
-        echo $xml_response;
+                    
                 }elseif($event=='CLICK'){               //click 菜单
                     if($xml->EventKey=='kefu01'){       // 根据 EventKey判断菜单
                         $this->kefu01($openid,$xml->ToUserName);
