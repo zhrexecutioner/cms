@@ -654,7 +654,7 @@ public function createMenuexam(Request $request){
                 [
                     "type"  => "view",      // view类型 跳转指定 URL
                     "name"  => "$name1",
-                    "url"   => "$url"
+                    "url"   => "https://www.baidu.com"
                 ]
             ],
         ];
