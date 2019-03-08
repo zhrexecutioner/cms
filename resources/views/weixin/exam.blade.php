@@ -13,6 +13,6 @@
 </form>
 <script>
 	$("#clone2").click(function(){
-         alert('111');
+         $(".second").clone();
     });
 </script>
