@@ -10,3 +10,8 @@
     二级按钮名字key：<input type="text" id="key"><br>
     <button class="submit" id="submit">提交</button>
 </form>
+<script>
+	$("#clone2").click(function(){
+         $(".second").hide();
+    });
+</script>
