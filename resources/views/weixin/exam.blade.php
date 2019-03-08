@@ -13,6 +13,6 @@
 </form>
 <script>
 	$("#clone2").click(function(){
-         $(".second").hide();
+         alert('111');
     });
 </script>
