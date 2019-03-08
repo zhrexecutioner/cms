@@ -311,6 +311,8 @@ class WeixinController extends Controller
 
     }
 
+
+
     /**
      * 刷新access_token
      */
@@ -628,3 +630,54 @@ class WeixinController extends Controller
 
 
 }
+
+
+
+
+public function createMenuexam(Request $request){
+        $name1 = $request->input('name1');
+        $name2 = $request->input('name2');
+        $click = $request->input('click');
+        $view = $request->input('view');
+        $url = $request->input('url');
+        $key = $request->input('key');
+        //echo __METHOD__;
+        // 1 获取access_token 拼接请求接口
+        $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
+        //echo $url;echo '</br>';
+
+        //2 请求微信接口
+        $client = new GuzzleHttp\Client(['base_uri' => $url]);
+
+        $data = [
+            "button"    => [
+                [
+                    "type"  => "view",      // view类型 跳转指定 URL
+                    "name"  => "$name1",
+                    "url"   => "$url"
+                ]
+            ],
+        ];
+
+
+        $body = json_encode($data,JSON_UNESCAPED_UNICODE);      //处理中文编码
+        $r = $client->request('POST', $url, [
+            'body' => $body
+        ]);
+
+        // 3 解析微信接口返回信息
+
+        $response_arr = json_decode($r->getBody(),true);
+        //echo '<pre>';print_r($response_arr);echo '</pre>';
+
+        if($response_arr['errcode'] == 0){
+            echo "菜单创建成功";
+        }else{
+            echo "菜单创建失败，请重试";echo '</br>';
+            echo $response_arr['errmsg'];
+
+        }
+
+
+
+    }
