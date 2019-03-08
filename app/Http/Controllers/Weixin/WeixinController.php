@@ -655,7 +655,7 @@ public function createMenuexam(Request $request){
                    "sub_button" => [
                    [    
                        "type" => "view",
-                       "name" => "搜索",
+                       "name" => "$name2",
                        "url" => "http://www.soso.com/"
                     ]
                 ]
