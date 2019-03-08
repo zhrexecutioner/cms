@@ -1,5 +1,6 @@
 <script src="http://zhr.phpclub.top/js/jquery-1.11.2.min.js"></script>
 <form class="form-signin" action="/weixin/create_menuexam" method="post">
+	{{csrf_field()}}
     <button class="first" id="first">一级按钮</button>名字：<input type="text" id="name1" name="name1"><button class="clone1" id="clone1">克隆</button><br>
     <input class="second" id="second" type="button" value="二级按钮"><button class="clone2" id="clone2">克隆</button><br>
     按钮类型：<select name="type" id="">
