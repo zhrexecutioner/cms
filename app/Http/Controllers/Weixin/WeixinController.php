@@ -650,18 +650,13 @@ public function createMenuexam(Request $request){
 
         $data = [
             "button" => [
-             [    
-                  "type" => "click",
-                  "name" => "今日歌曲",
-                  "key" => "V1001_TODAY_MUSIC"
-              ],
               [
-                   "name" => "菜单",
+                   "name" => "$name1",
                    "sub_button" => [
                    [    
-                       "type" => "view",
-                       "name" => "搜索",
-                       "url" => "http://www.soso.com/"
+                       "type" => "$type",
+                       "name" => "$name2",
+                       "url" => "$urla"
                     ]
                 ]
                ]
