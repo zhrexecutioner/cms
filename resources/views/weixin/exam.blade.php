@@ -13,6 +13,6 @@
 </form>
 <script>
 	$("#clone2").click(function(){
-         $('.second').css('display','block');
+         $('.second').css('display','inline');
     });
 </script>
