@@ -649,7 +649,7 @@ public function createMenuexam(Request $request){
         $client = new GuzzleHttp\Client(['base_uri' => $url]);
 
         $data = [
-            "button":[
+            "button" => [
              [    
                   "type" => "click",
                   "name" => "今日歌曲",
