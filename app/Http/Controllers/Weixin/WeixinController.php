@@ -651,10 +651,10 @@ public function createMenuexam(Request $request){
         $data = [
             "button" =>[
               [
-                   "name" => "菜单",
+                   "name" => "$name1",
                    "sub_button" => [
                    [    
-                       "type" => "view",
+                       "type" => "$type",
                        "name" => "搜索",
                        "url" => "http://www.soso.com/"
                     ]
