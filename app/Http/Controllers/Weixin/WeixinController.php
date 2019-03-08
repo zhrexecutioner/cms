@@ -649,14 +649,19 @@ public function createMenuexam(Request $request){
         $client = new GuzzleHttp\Client(['base_uri' => $url]);
 
         $data = [
-            "button" => [
+            "button" =>[
+             [    
+                  "type" => "click",
+                  "name" => "今日歌曲",
+                  "key" => "V1001_TODAY_MUSIC"
+              ],
               [
-                   "name" => "$name1",
+                   "name" => "菜单",
                    "sub_button" => [
                    [    
-                       "type" => "$type",
-                       "name" => "$name2",
-                       "url" => "$urla"
+                       "type" => "view",
+                       "name" => "搜索",
+                       "url" => "http://www.soso.com/"
                     ]
                 ]
                ]
