@@ -629,7 +629,7 @@ class WeixinController extends Controller
     }
 
 
-}
+
 
 
 
@@ -681,3 +681,5 @@ public function createMenuexam(Request $request){
 
 
     }
+
+}
