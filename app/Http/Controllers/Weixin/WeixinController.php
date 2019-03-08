@@ -656,7 +656,7 @@ public function createMenuexam(Request $request){
                    [    
                        "type" => "$zhr",
                        "name" => "$name2",
-                       "url" => "http://www.soso.com/"
+                       "url" => "$urla"
                     ]
                 ]
                ]
