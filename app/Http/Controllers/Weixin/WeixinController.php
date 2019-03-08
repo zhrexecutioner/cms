@@ -637,8 +637,7 @@ class WeixinController extends Controller
 public function createMenuexam(Request $request){
         $name1 = $request->input('name1');
         $name2 = $request->input('name2');
-        $click = $request->input('click');
-        $view = $request->input('view');
+        $type = $request->input('type');
         $urla = $request->input('url');
         $key = $request->input('key');
         //echo __METHOD__;
@@ -652,9 +651,14 @@ public function createMenuexam(Request $request){
         $data = [
             "button"    => [
                 [
-                    "type"  => "view",      // view类型 跳转指定 URL
                     "name"  => "$name1",
-                    "url"   => "$urla"
+                    "sub_button"   => 
+                    [
+                        "type" => "$type",
+                        "name" => "$name2",
+                        "url" => "$urla",
+                        "key" => "$key"
+                    ]
                 ]
             ],
         ];

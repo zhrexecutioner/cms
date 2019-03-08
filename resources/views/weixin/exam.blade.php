@@ -3,10 +3,7 @@
 	{{csrf_field()}}
     <button class="first" id="first">一级按钮</button>名字：<input type="text" id="name1" name="name1"><button class="clone1" id="clone1">克隆</button><br>
     <input class="second" id="second" type="button" value="二级按钮"><button class="clone2" id="clone2">克隆</button><br>
-    按钮类型：<select name="type" id="">
-				<option value="click">click</option>
-				<option value="view">view</option>
-    		 </select><br>
+    按钮类型：<input type="text" id="type" name="type"><br>
     二级按钮名字：<input type="text" id="name2" name="name2"><br>
     二级按钮url：<input type="text" id="url" name="url"><br>
     二级按钮名字key：<input type="text" id="key" name="key"><br>
