@@ -640,6 +640,9 @@ public function createMenuexam(Request $request){
         $zhr = $request->input('zhr');
         $urla = $request->input('url');
         $key = $request->input('key');
+        if($urla){
+            $zhr='view';
+        }
         //echo __METHOD__;
         // 1 获取access_token 拼接请求接口
         $url = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token='.$this->getWXAccessToken();
