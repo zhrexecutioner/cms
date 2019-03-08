@@ -639,7 +639,7 @@ public function createMenuexam(Request $request){
         $name2 = $request->input('name2');
         $click = $request->input('click');
         $view = $request->input('view');
-        $url = $request->input('url');
+        $urla = $request->input('url');
         $key = $request->input('key');
         //echo __METHOD__;
         // 1 获取access_token 拼接请求接口
@@ -654,7 +654,7 @@ public function createMenuexam(Request $request){
                 [
                     "type"  => "view",      // view类型 跳转指定 URL
                     "name"  => "$name1",
-                    "url"   => "https://www.$url.com"
+                    "url"   => "$urla"
                 ]
             ],
         ];
