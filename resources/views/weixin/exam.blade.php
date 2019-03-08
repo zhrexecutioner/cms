@@ -1,4 +1,4 @@
-<script src="http://res2.wx.qq.com/open/js/jweixin-1.4.0.js"></script>
+<script src="http://zhr.phpclub.top/js/jquery-1.11.2.min.js"></script>
 <form action="" class="form-inline">
     <button class="first" id="first">一级按钮</button>名字：<input type="text" id="name1"><button class="clone1" id="clone1">克隆</button><br>
     <button class="second" id="second">二级按钮</button><button class="clone2" id="clone2">克隆</button><br>
