@@ -656,8 +656,7 @@ public function createMenuexam(Request $request){
                     [
                         "type" => "$type",
                         "name" => "$name2",
-                        "url" => "$urla",
-                        "key" => "$key"
+                        "url" => "$urla"
                     ]
                 ]
             ],
