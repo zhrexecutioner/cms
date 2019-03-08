@@ -320,6 +320,11 @@ class WeixinController extends Controller
         echo $this->getWXAccessToken();
     }
 
+    public function exam()
+    {
+        return view('weixin.exam');
+    }
+
 
     public function materialTest()
     {
