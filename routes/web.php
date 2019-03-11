@@ -116,6 +116,7 @@ Route::get('/cart/add/{goods_id}','Cart\IndexController@add')->middleware('check
 Route::post('/cart/add2','Cart\IndexController@add2')->middleware('check.login.token');      //添加商品
 Route::get('/cart/del/{goods_id}','Cart\IndexController@del')->middleware('check.login.token');      //删除商品
 Route::get('/cart/del2/{goods_id}','Cart\IndexController@del2')->middleware('check.login.token');      //删除商品
+Route::get('/zhr','Order\IndexController@testa');
 
 
 //商品

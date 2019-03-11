@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Weixin;
 
 use App\Model\UserModel;
+use App\Model\Goods;
 use App\Model\WeixinChatModel;
 use App\Model\WeixinUser;
 use Illuminate\Http\Request;
@@ -112,24 +113,8 @@ class WeixinController extends Controller
                                 </xml>';
                                 echo $xml_response;
             }elseif($xml->MsgType=='text'){
-                $PicUrl='AcrQRF3aIwyX9nIMWAEdTFU0-BkR1qnZPHcusWAtATlUUQN7sx8mG1CjT4xchs0q';
-                $url='https://www.baidu.com';
-                $xml_response ='<xml>
-                                  <ToUserName><![CDATA['.$openid.']]></ToUserName>
-                                  <FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName>
-                                  <CreateTime>'.time().'</CreateTime>
-                                  <MsgType><![CDATA[news]]></MsgType>
-                                  <ArticleCount>1</ArticleCount>
-                                  <Articles>
-                                    <item>
-                                      <Title><![CDATA[tuwen]]></Title>
-                                      <Description><![CDATA[wenzi]]></Description>
-                                      <PicUrl><![CDATA['.$PicUrl.']]></PicUrl>
-                                      <Url><![CDATA['.$url.']]></Url>
-                                    </item>
-                                  </Articles>
-                                </xml>';
-                                echo $xml_response;
+                $content=$xml->Content;
+                $u = Goods::where(['goods_name'=>$content])->first()->toarray();
 
             }elseif($xml->MsgType=='image'){       //用户发送图片信息
                 //视业务需求是否需要下载保存图片

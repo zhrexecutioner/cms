@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Order;
 
 use App\Model\CartModel;
+use App\Model\Goods;
 use App\Model\GoodsModel;
 use App\Model\OrderGoodsModel;
 use Illuminate\Http\Request;
@@ -85,5 +86,10 @@ class IndexController extends Controller
             'list'  => $list
         ];
         return view('orders.list',$data);
+    }
+
+    public function testa(){
+        $u = Goods::where(['goods_name'=>$content])->first()->toarray();
+        print_r($u);
     }
 }
