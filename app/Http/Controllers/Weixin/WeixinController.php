@@ -93,7 +93,7 @@ class WeixinController extends Controller
 
 
                 // echo $xml_response;
-                $PicUrl='AcrQRF3aIwyX9nIMWAEdTFU0-BkR1qnZPHcusWAtATlUUQN7sx8mG1CjT4xchs0q';
+                $PicUrl='http://mmbiz.qpic.cn/mmbiz_jpg/6VN1HNqJyI2FIV0bQk1TMMSwCSxmy8ick9uAOFYJbKLExS9YMlphD7c3wKibQWr1oqIalQQjf2YLWmHEjVlic1XXw/0';
                 $url='https://www.baidu.com';
                 $xml_response ='<xml>
                                   <ToUserName><![CDATA['.$openid.']]></ToUserName>
@@ -111,7 +111,7 @@ class WeixinController extends Controller
                                   </Articles>
                                 </xml>';
                                 echo $xml_response;
-            }elseif($xml->Content=='图文消息'){
+            }elseif($xml->MsgType=='text'){
                 $PicUrl='AcrQRF3aIwyX9nIMWAEdTFU0-BkR1qnZPHcusWAtATlUUQN7sx8mG1CjT4xchs0q';
                 $url='https://www.baidu.com';
                 $xml_response ='<xml>
