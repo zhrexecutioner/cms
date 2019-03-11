@@ -35,7 +35,7 @@ class WeixinController extends Controller
         $get = json_encode($_GET);
         $str = '>>>>>' . date('Y-m-d H:i:s') .' '. $get . "<<<<<\n";
         file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
-        echo $_GET['echostr'];
+        //echo $_GET['echostr'];
     }
 
     /**
