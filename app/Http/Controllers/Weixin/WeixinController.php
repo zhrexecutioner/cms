@@ -116,6 +116,7 @@ class WeixinController extends Controller
                 $content=$xml->Content;
                 $u = Goods::where(['goods_name'=>$content])->first()->toarray();
                 $goods_name=$u['goods_name'];
+                $goods_content=$u['goods_content'];
                 $goods_img=$u['goods_img'];
                 $url='https://www.baidu.com';
                 $xml_response ='<xml>
@@ -126,8 +127,8 @@ class WeixinController extends Controller
                                   <ArticleCount>1</ArticleCount>
                                   <Articles>
                                     <item>
-                                      <Title><![CDATA[shop]]></Title>
-                                      <Description><![CDATA['.$goods_name.']]></Description>
+                                      <Title><![CDATA['.$goods_name.']]></Title>
+                                      <Description><![CDATA['.$goods_content.']]></Description>
                                       <PicUrl><![CDATA['.$goods_img.']]></PicUrl>
                                       <Url><![CDATA['.$url.']]></Url>
                                     </item>
