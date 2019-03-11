@@ -110,7 +110,8 @@ class WeixinController extends Controller
                                       <Url><![CDATA['.$url.']]></Url>
                                     </item>
                                   </Articles>
-                                </xml>'
+                                </xml>';
+                                echo $xml_response;
 
             }elseif($xml->MsgType=='image'){       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
