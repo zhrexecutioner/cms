@@ -115,6 +115,25 @@ class WeixinController extends Controller
             }elseif($xml->MsgType=='text'){
                 $content=$xml->Content;
                 $u = Goods::where(['goods_name'=>$content])->first()->toarray();
+                $goods_name=$u['goods_name'];
+                $goods_img=$u['goods_img'];
+                $url='https://www.baidu.com';
+                $xml_response ='<xml>
+                                  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                                  <FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName>
+                                  <CreateTime>'.time().'</CreateTime>
+                                  <MsgType><![CDATA[news]]></MsgType>
+                                  <ArticleCount>1</ArticleCount>
+                                  <Articles>
+                                    <item>
+                                      <Title><![CDATA[shop]]></Title>
+                                      <Description><![CDATA['.$goods_name.']]></Description>
+                                      <PicUrl><![CDATA['.$goods_img.']]></PicUrl>
+                                      <Url><![CDATA['.$url.']]></Url>
+                                    </item>
+                                  </Articles>
+                                </xml>';
+                                echo $xml_response;
 
             }elseif($xml->MsgType=='image'){       //用户发送图片信息
                 //视业务需求是否需要下载保存图片
