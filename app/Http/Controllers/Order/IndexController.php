@@ -91,6 +91,6 @@ class IndexController extends Controller
     public function testa(){
         $content='华为nave3e';
         $u = Goods::where(['goods_name'=>$content])->first()->toarray();
-        print_r($u);
+        print_r($u['goods_name']);
     }
 }
