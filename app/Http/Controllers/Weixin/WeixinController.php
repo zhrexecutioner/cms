@@ -49,7 +49,10 @@ class WeixinController extends Controller
         // }
         echo $_GET['echostr'];
         $str = file_get_contents("php://input");
-        file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
+        //file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
+        $xml = simplexml_load_string($str);
+        $openid = $xml->FromUserName;
+        file_put_contents('logs/wx_event.log',$openid,FILE_APPEND);
     }
 
     /**
