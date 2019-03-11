@@ -32,8 +32,8 @@ class WeixinController extends Controller
      */
     public function validToken1()
     {
-        $get = json_encode($_GET);
-        $str = '>>>>>' . date('Y-m-d H:i:s') .' '. $get . "<<<<<\n";
+        $arr = $_REQUEST;
+        $str = var_export($arr,true);
         file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
         //echo $_GET['echostr'];
     }
