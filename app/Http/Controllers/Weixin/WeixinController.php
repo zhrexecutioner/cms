@@ -76,23 +76,41 @@ class WeixinController extends Controller
 
         // 处理用户发送消息
         if(isset($xml->MsgType)){
-            if($xml->MsgType=='text'){            //用户发送文本消息
-                $msg = $xml->Content;
-                //记录聊天消息
+            if($xml->Content=='图文消息'){            //用户发送文本消息
+                // $msg = $xml->Content;
+                // //记录聊天消息
 
-                $data = [
-                    'msg'       => $xml->Content,
-                    'msgid'     => $xml->MsgId,
-                    'openid'    => $openid,
-                    'msg_type'  => 1        // 1用户发送消息 2客服发送消息
-                ];
+                // $data = [
+                //     'msg'       => $xml->Content,
+                //     'msgid'     => $xml->MsgId,
+                //     'openid'    => $openid,
+                //     'msg_type'  => 1        // 1用户发送消息 2客服发送消息
+                // ];
 
-                $id = WeixinChatModel::insertGetId($data);
-                var_dump($id);
-                $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
+                // $id = WeixinChatModel::insertGetId($data);
+                // var_dump($id);
+                // $xml_response = '<xml><ToUserName><![CDATA['.$openid.']]></ToUserName><FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName><CreateTime>'.time().'</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA['. $msg. date('Y-m-d H:i:s') .']]></Content></xml>';
 
 
-                echo $xml_response;
+                // echo $xml_response;
+                $PicUrl='AcrQRF3aIwyX9nIMWAEdTFU0-BkR1qnZPHcusWAtATlUUQN7sx8mG1CjT4xchs0q';
+                $url='https://www.baidu.com';
+                $xml_response ='<xml>
+                                  <ToUserName><![CDATA['.$openid.']]></ToUserName>
+                                  <FromUserName><![CDATA['.$xml->ToUserName.']]></FromUserName>
+                                  <CreateTime>'.time().'</CreateTime>
+                                  <MsgType><![CDATA[news]]></MsgType>
+                                  <ArticleCount>1</ArticleCount>
+                                  <Articles>
+                                    <item>
+                                      <Title><![CDATA[tuwen]]></Title>
+                                      <Description><![CDATA[wenzi]]></Description>
+                                      <PicUrl><![CDATA['.$PicUrl.']]></PicUrl>
+                                      <Url><![CDATA['.$url.']]></Url>
+                                    </item>
+                                  </Articles>
+                                </xml>';
+                                echo $xml_response;
             }elseif($xml->Content=='图文消息'){
                 $PicUrl='AcrQRF3aIwyX9nIMWAEdTFU0-BkR1qnZPHcusWAtATlUUQN7sx8mG1CjT4xchs0q';
                 $url='https://www.baidu.com';
