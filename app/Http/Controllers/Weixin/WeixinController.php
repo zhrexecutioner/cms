@@ -35,6 +35,18 @@ class WeixinController extends Controller
         $arr = $_REQUEST;
         $str = var_export($arr,true);
         file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
+        define("TOKEN",zhanghengrui);
+        $signature =$arr['signature'];
+        $nonce = $arr['nonce'];
+        $timestamp=$arr['timestamp'];
+        $newArr = array(TOKEN,$timestamp,$nonce);
+        sort($newArr,SORT_STRING);
+        $strnews = implode($newArr);
+        $newstr = sha1($strnews);
+        if($newstr == $signature){
+            $str =$arr['echostr'];
+            echo $str;
+        }
         //echo $_GET['echostr'];
     }
 
