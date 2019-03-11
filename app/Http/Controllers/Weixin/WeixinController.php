@@ -121,6 +121,7 @@ class WeixinController extends Controller
                 if($event=='subscribe'){                        //扫码关注事件
                     $sub_time = $xml->CreateTime;               //扫码关注时间
                     //获取用户信息
+                    $user_info = $this->getUserInfo($openid);
                     //保存用户信息
                     $u = WeixinUser::where(['openid'=>$openid])->first();
                     if($u){       //用户不存在
