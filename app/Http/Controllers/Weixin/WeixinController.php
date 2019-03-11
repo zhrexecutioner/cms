@@ -35,7 +35,7 @@ class WeixinController extends Controller
         $arr = $_REQUEST;
         $str = var_export($arr,true);
         file_put_contents('logs/wx_event.log',$str,FILE_APPEND);
-        define("TOKEN",zhanghengrui);
+        define("TOKEN",'zhanghengrui');
         $signature =$arr['signature'];
         $nonce = $arr['nonce'];
         $timestamp=$arr['timestamp'];
