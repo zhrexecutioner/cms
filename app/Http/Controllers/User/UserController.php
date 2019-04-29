@@ -52,7 +52,7 @@ class UserController extends Controller
 
         $nick_name = $request->input('nick_name');
 
-        $u = UserModel::where(['nick_name'=>$nick_name])->first();
+        $u = UserModel::where(['name'=>$nick_name])->first();
         if($u){
             die("用户名已存在");
         }
@@ -68,11 +68,10 @@ class UserController extends Controller
         $pass = password_hash($pass1,PASSWORD_BCRYPT);
 
         $data = [
-            'nick_name'  => $request->input('nick_name'),
-            'age'  => $request->input('age'),
+            'name'  => $request->input('nick_name'),
             'email'  => $request->input('u_email'),
             'reg_time'  => time(),
-            'pass'  => $pass
+            'password'  => $pass
         ];
 
        $uid = UserModel::insertGetId($data);
