@@ -75,7 +75,7 @@ Route::get('/view/test2','Test\TestController@viewTest2');
 Route::get('/user/reg','User\UserController@reg')->middleware('fangshua');
 Route::post('/user/reg','User\UserController@doReg');
 
-Route::get('/user/login','User\UserController@login');           //用户登录
+Route::get('/user/login','User\UserController@login')->middleware('fangshua');           //用户登录
 Route::post('/user/login','User\UserController@doLogin');        //用户登录
 Route::get('/user/center','User\UserController@center')->middleware('check.login.token');        //个人中心
 
