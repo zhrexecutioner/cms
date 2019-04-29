@@ -29,7 +29,7 @@ class fangshua
             $num = Redis::incr($redis_key);         //  储存           用户+访问的路由
             Redis::expire($redis_key, 60);
             # 一分钟 20 次   上限
-            if ($num > 1) {
+            if ($num > 5) {
                 # 防刷
                 $response = [
                     'errCode' => 45019
