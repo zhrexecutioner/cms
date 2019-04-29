@@ -72,7 +72,7 @@ Route::get('/view/test2','Test\TestController@viewTest2');
 
 
 //用户注册
-Route::get('/user/reg','User\UserController@reg');
+Route::get('/user/reg','User\UserController@reg')->middleware('fangshua');
 Route::post('/user/reg','User\UserController@doReg');
 
 Route::get('/user/login','User\UserController@login');           //用户登录
