@@ -70,7 +70,6 @@ class UserController extends Controller
         $data = [
             'name'  => $request->input('nick_name'),
             'email'  => $request->input('u_email'),
-            'reg_time'  => time(),
             'password'  => $pass
         ];
 
