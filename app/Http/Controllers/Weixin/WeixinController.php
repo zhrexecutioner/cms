@@ -760,7 +760,7 @@ public function createMenuexam(Request $request){
     	if($res){
     		$num=rand(1000,9999);
     		$token=md5($num);
-    		cache(['access'=>$token],3600);
+    		cache([$name=>$token],3600);
     		echo json_encode(['token'=>$token]);
     	}else{
 			$ip = $request->getClientIp();
@@ -782,6 +782,12 @@ public function createMenuexam(Request $request){
 				echo json_encode(['ip'=>$ip,'falsenum'=>1]);
 			}
     	}
+    }
+
+    public function quitexam(Request $request){
+    	$name=$request->input('name');
+    	$access=cache($name);
+    	echo $access;
     }
 
 }
