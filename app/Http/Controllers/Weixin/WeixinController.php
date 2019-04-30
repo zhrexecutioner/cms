@@ -761,6 +761,7 @@ public function createMenuexam(Request $request){
     		$num=rand(1000,9999);
     		$token=md5($num);
     		cache([$name=>$token],3600);
+    		DB::table('users')->where('name',$name)->update(['remember_token'=>$token]);
     		echo json_encode(['token'=>$token]);
     	}else{
 			$ip = $request->getClientIp();
@@ -786,9 +787,7 @@ public function createMenuexam(Request $request){
 
     public function quitexam(Request $request){
     	$name=$request->input('name');
-    	cache([$name=>'aaa'],0);
-    	$tokenb=cache($name);
-    	echo $tokenb;
+    	DB::table('users')->where('name',$name)->update(['remember_token'=>'已注销']);
     }
 
 }
