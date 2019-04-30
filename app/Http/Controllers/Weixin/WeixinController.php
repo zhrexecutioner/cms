@@ -764,7 +764,7 @@ public function createMenuexam(Request $request){
     		echo json_encode(['token'=>$token]);
     	}else{
 			$ip = $request->getClientIp();
-			$trueip=DB::table('ip')->where('ip',$ip)->first()->toArray();
+			$trueip=DB::table('ip')->where('ip',$ip)->get()->toArray();
 			if($trueip){
 				$ipnum=DB::table('ip')->where('ip',$ip)->first()->num;
 				$newnum=$ipnum+1;
