@@ -791,6 +791,7 @@ public function createMenuexam(Request $request){
 
     public function quitexam(Request $request){
     	$name=$request->input('name');
+    	cache([$name=>''],0);
     	DB::table('users')->where('name',$name)->update(['remember_token'=>'已注销']);
     }
 
@@ -807,6 +808,7 @@ public function createMenuexam(Request $request){
     public function shijian(Request $request){
     	$time=$request->input('time');
     	DB::table('time')->update(['time'=>$time]);
+    	echo '成功！！！';
     }
 
      public function fangshuashezhi(Request $request){
@@ -817,6 +819,7 @@ public function createMenuexam(Request $request){
     	$fangshuanum=$request->input('fangshuanum');
     	$fangshuatime=$request->input('fangshuatime');
     	DB::table('fangshua')->update(['fangshuanum'=>$fangshuanum,'fangshuatime'=>$fangshuatime]);
+    	echo '成功！！！';
     }
 
 }
