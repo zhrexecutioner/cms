@@ -805,8 +805,10 @@ public function createMenuexam(Request $request){
     }
 
     public function shijian(Request $request){
-    	$time=$request->input('time');
-    	DB::table('time')->update(['time'=>$time]);
+    	$text=$request->input('text');
+    	$time=time()+$text;
+    	$token=$request->input('token');
+    	DB::table('users')->where('remember_token',$token)->update(['time'=>$time]);
     	echo '成功！！！';
     }
 

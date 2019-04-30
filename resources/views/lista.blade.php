@@ -21,7 +21,7 @@ $(document).ready(function(){
 	$("button[name='btn']").click(function(){
 		var text = $(".text2").val();
 		var token = $(".token").val();
-		var url = "/sendmsg";
+		var url = "/shijian";
 		$.ajax({
 			type : "post",			
 			dataType : "json",
