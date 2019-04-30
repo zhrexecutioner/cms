@@ -778,7 +778,7 @@ public function createMenuexam(Request $request){
 					'num'=>1
 				];
 				$sql = DB::table('ip')->insert($dataa);
-				echo json_encode(['ip'=>$ip],'falsenum'=>1);
+				echo json_encode(['ip'=>$ip,'falsenum'=>1]);
 			}
     	}
     }
