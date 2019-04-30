@@ -198,3 +198,5 @@ Route::get('/weixin/jssdk/test','Weixin\WeixinController@jssdkTest');       // æ
 Route::get('/exam','Weixin\WeixinController@exam');
 
 Route::post('/weixin/create_menuexam','Weixin\WeixinController@createMenuexam');
+
+Route::any('/log','Weixin\WeixinController@log');

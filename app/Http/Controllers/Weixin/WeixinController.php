@@ -752,4 +752,19 @@ public function createMenuexam(Request $request){
 
     }
 
+    public function log(Request $request){
+    	$name=$request->input('name');
+    	$password=$request->input('password');
+    	$res = UserModel::where(['name'=>$name,'password'=>$password])->first();
+    	if($res){
+    		$num=rand(1000,9999);
+    		$token=md5($num);
+    		cache(['access'=>$token],3600);
+    		echo json_encode(['token'=>$token]);
+    	}else{
+			$ip = $request->getClientIp();
+			echo json_encode(['ip'=>$ip]);
+    	}
+    }
+
 }
