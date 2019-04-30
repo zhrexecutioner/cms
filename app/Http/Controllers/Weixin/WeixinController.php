@@ -8,6 +8,7 @@ use App\Model\WeixinChatModel;
 use App\Model\WeixinUser;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Redis;
 use GuzzleHttp;
@@ -763,7 +764,22 @@ public function createMenuexam(Request $request){
     		echo json_encode(['token'=>$token]);
     	}else{
 			$ip = $request->getClientIp();
-			echo json_encode(['ip'=>$ip]);
+			if($ip){
+				$ipnum=DB::table('ip')->where('ip',$ip)->first()->num;
+				$newnum=$ipnum+1;
+				$data=[
+					'num'=>$newnum;
+				];
+				DB::table('ip')->where('ip',$ip)->update($data);
+				echo json_encode(['ip'=>$ip,'falsenum'=>$newnum]);
+			}else{
+				$dataa=[
+					'ip'=>$ip,
+					'num'=>1
+				];
+				$sql = DB::table('ip')->insert($dataa);
+				echo json_encode(['ip'=>$ip],'falsenum'=>1);
+			}
     	}
     }
 
