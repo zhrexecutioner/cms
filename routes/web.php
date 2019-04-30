@@ -206,3 +206,7 @@ Route::any('/quitexam','Weixin\WeixinController@quitexam');
 Route::any('/chaoshishezhi','Weixin\WeixinController@chaoshishezhi');
 
 Route::any('/shijian','Weixin\WeixinController@shijian');
+
+Route::any('/fangshuashezhi','Weixin\WeixinController@chaoshishezhi');
+
+Route::any('/fangshua','Weixin\WeixinController@fangshua');

@@ -806,4 +806,14 @@ public function createMenuexam(Request $request){
     	DB::table('time')->update(['time'=>$time]);
     }
 
+     public function fangshuashezhi(Request $request){
+    	return view('fangshua');
+    }
+
+    public function fangshua(Request $request){
+    	$fangshuanum=$request->input('fangshuanum');
+    	$fangshuatime=$request->input('fangshuatime');
+    	DB::table('fangshua')->update(['fangshuanum'=>$fangshuanum,'fangshuatime'=>$fangshuatime]);
+    }
+
 }
