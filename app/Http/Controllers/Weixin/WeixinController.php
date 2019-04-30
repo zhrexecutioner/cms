@@ -786,8 +786,10 @@ public function createMenuexam(Request $request){
 
     public function quitexam(Request $request){
     	$name=$request->input('name');
-    	$access=cache($name);
-    	echo $access;
+    	$token=cache($name);
+    	cache([$name=>$token],0);
+    	$tokenb=cache($name);
+    	echo $token;
     }
 
 }
