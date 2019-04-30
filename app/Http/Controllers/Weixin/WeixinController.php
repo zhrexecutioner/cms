@@ -789,7 +789,7 @@ public function createMenuexam(Request $request){
     	$token=cache($name);
     	cache([$name=>$token],0);
     	$tokenb=cache($name);
-    	echo $token;
+    	echo $tokenb;
     }
 
 }
