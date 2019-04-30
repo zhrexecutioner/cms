@@ -755,15 +755,15 @@ public function createMenuexam(Request $request){
 
     public function log(Request $request){
     	$name=$request->input('name');
-    	$name=Base64_encode($name);
+    	$newname=Base64_encode($name);
     	$password=$request->input('password');
-    	$res = UserModel::where(['name'=>$name,'password'=>$password])->first();
+    	$res = UserModel::where(['name'=>$newname,'password'=>$password])->first();
     	if($res){
     		$num=rand(1000,9999);
     		$token=md5($num);
     		$time=DB::table('time')->first()->time;
-    		cache([$name=>$token],$time);
-    		DB::table('users')->where('name',$name)->update(['remember_token'=>$token]);
+    		cache([$newname=>$token],$time);
+    		DB::table('users')->where('name',$newname)->update(['remember_token'=>$token]);
     		echo json_encode(['token'=>$token]);
     	}else{
 			$ip = $request->getClientIp();
