@@ -202,3 +202,5 @@ Route::post('/weixin/create_menuexam','Weixin\WeixinController@createMenuexam');
 Route::any('/log','Weixin\WeixinController@log');
 
 Route::any('/quitexam','Weixin\WeixinController@quitexam');
+
+Route::any('/aaaaa','Weixin\WeixinController@aaaaa');

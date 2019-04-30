@@ -790,4 +790,9 @@ public function createMenuexam(Request $request){
     	DB::table('users')->where('name',$name)->update(['remember_token'=>'已注销']);
     }
 
+    public function aaaaa(Request $request){
+    	$fangshuanum=DB::table('fangshua')->get()->fangshuanum;
+    	var_dump($fangshuanum);
+    }
+
 }
