@@ -791,8 +791,9 @@ public function createMenuexam(Request $request){
     }
 
     public function aaaaa(Request $request){
-    	$fangshuanum=DB::table('fangshua')->get();
-    	var_dump($fangshuanum);
+    	$fangshuanum=DB::table('fangshua')->get()->toArray();
+    	$new=$fangshuanum[0]->fangshuanum;
+    	var_dump($new);
     }
 
 }
