@@ -761,7 +761,7 @@ public function createMenuexam(Request $request){
     		$num=rand(1000,9999);
     		$token=md5($num);
     		$time=DB::table('time')->first();
-    		echo $time;exit;
+    		var_dump($time);exit;
     		cache([$name=>$token],3600);
     		DB::table('users')->where('name',$name)->update(['remember_token'=>$token]);
     		echo json_encode(['token'=>$token]);
