@@ -791,7 +791,7 @@ public function createMenuexam(Request $request){
 
     public function quitexam(Request $request){
     	$name=$request->input('name');
-    	cache([$name=>''],0);
+    	Cache::pull($name);
     	DB::table('users')->where('name',$name)->update(['remember_token'=>'已注销']);
     }
 
