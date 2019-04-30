@@ -203,7 +203,7 @@ Route::any('/log','Weixin\WeixinController@log');
 
 Route::any('/quitexam','Weixin\WeixinController@quitexam');
 
-Route::any('/chaoshishezhi','Weixin\WeixinController@chaoshishezhi');
+Route::any('/chaoshishezhi','Weixin\WeixinController@chaoshishezhi')->middleware('fangshua');
 
 Route::any('/shijian','Weixin\WeixinController@shijian');
 
