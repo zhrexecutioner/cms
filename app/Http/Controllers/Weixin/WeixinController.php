@@ -755,6 +755,7 @@ public function createMenuexam(Request $request){
 
     public function log(Request $request){
     	$name=$request->input('name');
+    	$name=Base64_encode($name);
     	$password=$request->input('password');
     	$res = UserModel::where(['name'=>$name,'password'=>$password])->first();
     	if($res){
