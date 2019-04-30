@@ -821,4 +821,9 @@ public function createMenuexam(Request $request){
     	echo '成功！！！';
     }
 
+    public function tokenlist(){
+    	$list=DB::table('users')->get()->toArray();
+    	return view('lista',['data'=>$list]);
+    }
+
 }
