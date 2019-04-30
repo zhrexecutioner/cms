@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Redis;
-
+use Illuminate\Support\Facades\DB;
 use Closure;
 
 
@@ -17,6 +17,8 @@ class fangshua
      */
     public function handle($request, Closure $next)
     {
+    		$fangshuanum=DB::table('fangshua')->get()->fangshuanum;
+    		$fangshuatime=DB::table('fangshua')->get()->fangshuatime;
             # 用户ip
             $uip = $_SERVER['SERVER_ADDR'];
             # 访问的接口
@@ -27,9 +29,9 @@ class fangshua
             $redis_key = 'str:' . $mPath . ':' . $uip;
             # incr   默认+1  返回次数
             $num = Redis::incr($redis_key);         //  储存           用户+访问的路由
-            Redis::expire($redis_key, 60);
+            Redis::expire($redis_key, $fangshuatime);
             # 一分钟 20 次   上限
-            if ($num > 5) {
+            if ($num > $fangshuanum) {
                 # 防刷
                 $response = [
                     'errCode' => 45019
@@ -39,7 +41,7 @@ class fangshua
 
 
                 # 10分钟
-                Redis::expire($redis_key, 60);
+                Redis::expire($redis_key, $fangshuatime);
                 echo json_encode($response,JSON_UNESCAPED_UNICODE);die;
             }
         return $next($request);
