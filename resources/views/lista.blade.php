@@ -16,6 +16,7 @@
 	</tr>
 	@endforeach
 </table>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
 	$("button[name='btn']").click(function(){
