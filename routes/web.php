@@ -203,4 +203,6 @@ Route::any('/log','Weixin\WeixinController@log');
 
 Route::any('/quitexam','Weixin\WeixinController@quitexam');
 
-Route::any('/aaaaa','Weixin\WeixinController@aaaaa');
+Route::any('/chaoshishezhi','Weixin\WeixinController@chaoshishezhi');
+
+Route::any('/shijian','Weixin\WeixinController@shijian');

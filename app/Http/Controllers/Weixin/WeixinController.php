@@ -797,4 +797,13 @@ public function createMenuexam(Request $request){
     	var_dump($new);
     }
 
+    public function chaoshishezhi(Request $request){
+    	return view('shijian');
+    }
+
+    public function shijian(Request $request){
+    	$time=$request->input('time');
+    	DB::table('time')->update(['time'=>$time]);
+    }
+
 }
