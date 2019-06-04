@@ -29,4 +29,11 @@ class XcxController extends Controller
     	];
     	echo json_encode($arrImgs);
     }
+
+    public function indextitle(){
+    	$arrImgs = array(
+    		'双11返场！！'
+    	);
+    	echo json_encode($arrImgs);
+    }
 }
