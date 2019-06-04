@@ -79,58 +79,50 @@ class XcxController extends Controller
     	echo json_encode($arr);
     }
 
-  //   public function car_sourcejk(){
-  //   	$arr=[];
-  //   	$k=0;
-  //   	for($i=ord("a");$i <= ord("z");$i++){
-  //   		$first = XcxModel::where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
-  //   		//$first=DB::table('brand')->where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
-  //   		// if(empty($first)){
-  //   		// 	$brand_name="";
-  //   		// 	$brand_image="";
-  //   		// }else{
-  //   		// 	$brand_name=$first[0]->brand_name;
-  //   		// 	$brand_image=$first[0]->brand_image;
-  //   		// }
-		// 	$arr[$k]['alpha']=chr($i);
-		// 	$arr[$k]['list']=$first;
-		// 	$k=$k+1;
-		// }
-		// //$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
-		// var_dump($arr);
-  //   }
-
     public function car_sourcejk(){
-    	$arr=[
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		],
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		]
-    	];
-    	var_dump($arr);
+    	$arr=[];
+    	$k=0;
+    	for($i=ord("a");$i <= ord("z");$i++){
+    		$first = XcxModel::where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
+			$arr[$k]['alpha']=chr($i);
+			$arr[$k]['list']=$first;
+			$k=$k+1;
+		}
+		//$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
+		var_dump($arr);
     }
+
+    // public function car_sourcejk(){
+    // 	$arr=[
+    // 		[
+    // 			"alpha"=>'bbb',
+    // 			"list"=>[
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'nnn'
+    // 				],
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'kkk'
+    // 				]
+    // 			]
+    // 		],
+    // 		[
+    // 			"alpha"=>'bbb',
+    // 			"list"=>[
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'nnn'
+    // 				],
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'kkk'
+    // 				]
+    // 			]
+    // 		]
+    // 	];
+    // 	var_dump($arr);
+    // }
  }
 
 // commonCar:[
