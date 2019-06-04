@@ -82,7 +82,7 @@ class XcxController extends Controller
     	$arr=[];
     	$k=0;
     	for($i=ord("a");$i <= ord("z");$i++){
-    		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
+    		$first=DB::table('brand')->where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
     		if(empty($first)){
     			$brand_name="";
     			$brand_image="";
