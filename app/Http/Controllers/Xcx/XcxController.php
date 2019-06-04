@@ -79,9 +79,13 @@ class XcxController extends Controller
     }
 
     public function car_sourcejk(){
+    	$arr=[];
     	for($i=ord("a");$i <= ord("z");$i++){
-			echo chr($i)."<br />";
+    		$first=DB::table('brand')->where('brand_first',$i)-get()->toArray();
+			$arr[]['alpha']="$i";
+			$arr[]['list'][]=$first;
 		}
+		var_dump($arr);
     }
 }
 //     public function car_sourcejk(){
