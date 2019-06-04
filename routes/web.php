@@ -214,3 +214,7 @@ Route::any('/fangshua','Weixin\WeixinController@fangshua');
 Route::any('/aaaaa','Weixin\WeixinController@aaaaa');
 
 Route::any('/tokenlist','Weixin\WeixinController@tokenlist');
+
+
+
+Route::any('/indexlunbo','Xcx\XcxController@indexlunbo');
