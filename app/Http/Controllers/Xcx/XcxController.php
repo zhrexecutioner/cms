@@ -83,7 +83,11 @@ class XcxController extends Controller
     	$k=0;
     	for($i=ord("a");$i <= ord("z");$i++){
     		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
-    		$brand_name=$first[0]->brand_name;
+    		if(empty($first)){
+    			$brand_name=null;
+    		}else{
+    			$brand_name=$first[0]->brand_name;
+    		}
 			$arr[$k]['alpha']=chr($i);
 			$arr[$k]['list']['name']=$brand_name;
 			$k=$k+1;
