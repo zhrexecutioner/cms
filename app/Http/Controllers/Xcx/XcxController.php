@@ -16,4 +16,12 @@ class XcxController extends Controller
     	);
     	echo json_encode($arrImgs);
     }
+
+    public function indexgg(){
+    	$arrImgs = array(
+    		'/images/hd1.png',
+      		'/images/hd2.png'
+    	);
+    	echo json_encode($arrImgs);
+    }
 }
