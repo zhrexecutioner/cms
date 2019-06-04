@@ -68,24 +68,24 @@ class XcxController extends Controller
     	echo json_encode($arr);
     }
 
-    public function car_source(){
-    	$arr=[
-    		[
-        		"image_src"=>'/images/w640_h358_9c1387930fa14ba0a30716865d0433b3.jpeg',
-        		"name"=>'奥迪'
-    		],
-    
-    	];
-    	var_dump($arr);exit;
-    	echo json_encode($arr);
-    }
-
     // public function car_source(){
-    // 	$first = XcxModel::select('name','image_src')->get()->toArray();
-    // 	$arr[]=$first;
+    // 	$arr=[
+    // 		[
+    //     		"image_src"=>'/images/w640_h358_9c1387930fa14ba0a30716865d0433b3.jpeg',
+    //     		"name"=>'奥迪'
+    // 		],
+    
+    // 	];
     // 	var_dump($arr);exit;
     // 	echo json_encode($arr);
     // }
+
+    public function car_source(){
+    	$first = XcxModel::select('name','image_src')->get()->toArray();
+    	$arr[]=$first;
+    	var_dump($arr);exit;
+    	echo json_encode($arr);
+    }
 
     public function car_sourcejk(){
     	$arr=[];
