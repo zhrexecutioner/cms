@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Model\XcxModel;
-use App\Model\IndexModel;
+use App\Model\IndexfuwuModel;
 
 class XcxController extends Controller
 {
@@ -55,7 +55,7 @@ class XcxController extends Controller
     }
 
     public function indexfuwu(){
-    	$first = IndexModel::select('url','images','content')->get()->toArray();
+    	$first = IndexfuwuModel::select('url','images','content')->get()->toArray();
     	echo json_encode($first);
     }
 
