@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class IndexModel extends Model
+class IndexfuwuModel extends Model
 {
     //
     public $table = 'indexfuwu';
