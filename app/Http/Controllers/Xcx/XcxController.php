@@ -79,37 +79,43 @@ class XcxController extends Controller
     }
 
     public function car_sourcejk(){
-    	$arr=[
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		],
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		]
-    	];
-    	echo json_encode($arr);
+    	for($i=ord("a");$i <= ord("z");$i++){
+			echo chr($i)."<br />";
+		}
     }
-}
+
+//     public function car_sourcejk(){
+//     	$arr=[
+//     		[
+//     			"alpha"=>'bbb',
+//     			"list"=>[
+//     				[
+//     					"image_src"=>'',
+//     					"name"=>'nnn'
+//     				],
+//     				[
+//     					"image_src"=>'',
+//     					"name"=>'kkk'
+//     				]
+//     			]
+//     		],
+//     		[
+//     			"alpha"=>'bbb',
+//     			"list"=>[
+//     				[
+//     					"image_src"=>'',
+//     					"name"=>'nnn'
+//     				],
+//     				[
+//     					"image_src"=>'',
+//     					"name"=>'kkk'
+//     				]
+//     			]
+//     		]
+//     	];
+//     	echo json_encode($arr);
+//     }
+// }
 
 // commonCar:[
 //       {
