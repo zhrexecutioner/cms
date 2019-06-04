@@ -83,7 +83,7 @@ class XcxController extends Controller
     	for($i=ord("a");$i <= ord("z");$i++){
     		$k=0;
     		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
-			$arr[$k]['alpha']="chr($i)";
+			$arr[$k]['alpha']=chr($i);
 			$arr[$k]['list']=$first;
 			$k++;
 		}
