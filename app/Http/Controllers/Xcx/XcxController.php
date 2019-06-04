@@ -49,6 +49,6 @@ class XcxController extends Controller
     			"content"=>"发布车源"
     		],
     	];
-    	echo json_encode($arrImgs);
+    	echo json_encode($arr);
     }
 }
