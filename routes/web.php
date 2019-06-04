@@ -228,3 +228,5 @@ Route::any('/indexwork','Xcx\XcxController@indexwork');
 Route::any('/indexfuwu','Xcx\XcxController@indexfuwu');
 
 Route::any('/car_source','Xcx\XcxController@car_source');
+
+Route::any('/car_sourcejk','Xcx\XcxController@car_sourcejk');

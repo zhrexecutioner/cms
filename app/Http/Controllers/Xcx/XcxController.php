@@ -77,6 +77,38 @@ class XcxController extends Controller
     	];
     	echo json_encode($arr);
     }
+
+    public function car_sourcejk(){
+    	$arr=[
+    		[
+    			"alpha"=>'bbb',
+    			"list"=>[
+    				[
+    					"image_src"=>'',
+    					"name"=>'nnn'
+    				],
+    				[
+    					"image_src"=>'',
+    					"name"=>'kkk'
+    				]
+    			]
+    		],
+    		[
+    			"alpha"=>'bbb',
+    			"list"=>[
+    				[
+    					"image_src"=>'',
+    					"name"=>'nnn'
+    				],
+    				[
+    					"image_src"=>'',
+    					"name"=>'kkk'
+    				]
+    			]
+    		]
+    	];
+    	echo json_encode($arr);
+    }
 }
 
 // commonCar:[
