@@ -78,47 +78,47 @@ class XcxController extends Controller
     	echo json_encode($arr);
     }
 
-  //   public function car_sourcejk(){
-  //   	$arr=[];
-  //   	for($i=ord("a");$i <= ord("z");$i++){
-  //   		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
-		// 	$arr[]['alpha']="chr($i)";
-		// 	$arr[]['list']=$first;
-		// }
-		// var_dump($arr);
-  //   }
-
     public function car_sourcejk(){
-    	$arr=[
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		],
-    		[
-    			"alpha"=>'bbb',
-    			"list"=>[
-    				[
-    					"image_src"=>'',
-    					"name"=>'nnn'
-    				],
-    				[
-    					"image_src"=>'',
-    					"name"=>'kkk'
-    				]
-    			]
-    		]
-    	];
-    	var_dump($arr);
+    	$arr=[];
+    	for($i=ord("a");$i <= ord("z");$i++){
+    		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
+			$arr['alpha']="chr($i)";
+			$arr['list']=$first;
+		}
+		var_dump($arr);
     }
+
+    // public function car_sourcejk(){
+    // 	$arr=[
+    // 		[
+    // 			"alpha"=>'bbb',
+    // 			"list"=>[
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'nnn'
+    // 				],
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'kkk'
+    // 				]
+    // 			]
+    // 		],
+    // 		[
+    // 			"alpha"=>'bbb',
+    // 			"list"=>[
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'nnn'
+    // 				],
+    // 				[
+    // 					"image_src"=>'',
+    // 					"name"=>'kkk'
+    // 				]
+    // 			]
+    // 		]
+    // 	];
+    // 	var_dump($arr);
+    // }
  }
 
 // commonCar:[
