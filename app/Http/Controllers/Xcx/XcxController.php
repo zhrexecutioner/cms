@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Xcx;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use App\Model\XcxModel;
 
 class XcxController extends Controller
 {
@@ -82,7 +83,8 @@ class XcxController extends Controller
     	$arr=[];
     	$k=0;
     	for($i=ord("a");$i <= ord("z");$i++){
-    		$first=DB::table('brand')->where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
+    		$first = XcxModel::where('brand_first',chr($i))->select('brand_name','brand_image')->get();
+    		//$first=DB::table('brand')->where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
     		if(empty($first)){
     			$brand_name="";
     			$brand_image="";
@@ -91,8 +93,7 @@ class XcxController extends Controller
     			$brand_image=$first[0]->brand_image;
     		}
 			$arr[$k]['alpha']=chr($i);
-			$arr[$k]['list']['name']=$first;
-			$arr[$k]['list']['image_src']=$brand_image;
+			$arr[$k]['list']=$first;
 			$k=$k+1;
 		}
 		//$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
