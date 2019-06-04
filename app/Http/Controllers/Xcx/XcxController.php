@@ -70,8 +70,8 @@ class XcxController extends Controller
     public function car_source(){
     	$arr=[
     		[
-        		"image_src":'/images/w640_h358_9c1387930fa14ba0a30716865d0433b3.jpeg',
-        		"name":'奥迪'
+        		"image_src"=>'/images/w640_h358_9c1387930fa14ba0a30716865d0433b3.jpeg',
+        		"name"=>'奥迪'
     		],
     
     	];
