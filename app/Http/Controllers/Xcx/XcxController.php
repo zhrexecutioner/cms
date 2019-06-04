@@ -20,8 +20,12 @@ class XcxController extends Controller
     public function indexgg(){
     	$arrImgs = [
     		[
-    			"img"=>'/images/hd1.png'
+    			"image"=>'/images/hd1.png',
+    		],
+    		[
+    			"image"=>'/images/hd2.png',
     		]
+
     	];
     	echo json_encode($arrImgs);
     }
