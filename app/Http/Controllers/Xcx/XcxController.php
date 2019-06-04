@@ -79,17 +79,17 @@ class XcxController extends Controller
     }
 
     public function car_sourcejk(){
-  //   	$arr=[];
-  //   	$k=0;
-  //   	for($i=ord("a");$i <= ord("z");$i++){
-  //   		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
-  //   		//$image_src=$first[0]->brand_name;
-		// 	$arr[$k]['alpha']=chr($i);
-		// 	$arr[$k]['list']=$first;
-		// 	$k=$k+1;
-		// }
-		$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
-		var_dump($first[0]->brand_name);
+    	$arr=[];
+    	$k=0;
+    	for($i=ord("a");$i <= ord("z");$i++){
+    		$first=DB::table('brand')->where('brand_first',chr($i))->get()->toArray();
+    		$brand_name=$first[0]->brand_name;
+			$arr[$k]['alpha']=chr($i);
+			$arr[$k]['list']['name']=$brand_name;
+			$k=$k+1;
+		}
+		//$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
+		var_dump($arr);
     }
 
     // public function car_sourcejk(){
