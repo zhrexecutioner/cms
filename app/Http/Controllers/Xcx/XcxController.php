@@ -83,7 +83,7 @@ class XcxController extends Controller
 			echo chr($i)."<br />";
 		}
     }
-
+}
 //     public function car_sourcejk(){
 //     	$arr=[
 //     		[
