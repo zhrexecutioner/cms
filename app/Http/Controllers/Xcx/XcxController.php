@@ -85,13 +85,13 @@ class XcxController extends Controller
     	for($i=ord("a");$i <= ord("z");$i++){
     		$first = XcxModel::where('brand_first',chr($i))->select('brand_name','brand_image')->get();
     		//$first=DB::table('brand')->where('brand_first',chr($i))->select('brand_name','brand_image')->get()->toArray();
-    		if(empty($first)){
-    			$brand_name="";
-    			$brand_image="";
-    		}else{
-    			$brand_name=$first[0]->brand_name;
-    			$brand_image=$first[0]->brand_image;
-    		}
+    		// if(empty($first)){
+    		// 	$brand_name="";
+    		// 	$brand_image="";
+    		// }else{
+    		// 	$brand_name=$first[0]->brand_name;
+    		// 	$brand_image=$first[0]->brand_image;
+    		// }
 			$arr[$k]['alpha']=chr($i);
 			$arr[$k]['list']=$first;
 			$k=$k+1;
