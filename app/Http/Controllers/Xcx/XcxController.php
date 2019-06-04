@@ -66,4 +66,44 @@ class XcxController extends Controller
     	];
     	echo json_encode($arr);
     }
+
+    public function car_source(){
+    	$arr=[
+    		[
+        		"image_src":'/images/w640_h358_9c1387930fa14ba0a30716865d0433b3.jpeg',
+        		"name":'奥迪'
+    		],
+    
+    	];
+    	echo json_encode($arr);
+    }
 }
+
+// commonCar:[
+//       {
+//         alpha:'bbb',
+//         list:[
+//           {
+//             image_src:'',
+//             name:'nnn'
+//           },
+//           {
+//             image_src: '',
+//             name: 'kkk'
+//           }
+//         ],
+//       },
+//       {
+//         alpha: 'mmm',
+//         list: [
+//           {
+//             image_src: '',
+//             name: 'nnn'
+//           },
+//           {
+//             image_src: '',
+//             name: 'kkk'
+//           }
+//         ],
+//       }
+//     ],
