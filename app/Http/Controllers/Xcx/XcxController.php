@@ -82,9 +82,9 @@ class XcxController extends Controller
 
     public function car_source(){
     	$first = XcxModel::select('name','image_src')->get()->toArray();
-    	$arr[]=$first;
-    	var_dump($arr);exit;
-    	echo json_encode($arr);
+    	//$arr[]=$first;
+    	//var_dump($arr);exit;
+    	echo json_encode($first);
     }
 
     public function car_sourcejk(){
