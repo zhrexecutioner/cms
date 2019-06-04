@@ -36,4 +36,18 @@ class XcxController extends Controller
     	);
     	echo json_encode($arrImgs);
     }
+    public function indexwork(){
+    	$arr=[
+    		[
+    			"url"=>"/pages/car/car",
+    			"images"=>"../../images/desk_publish@2x.png",
+    			"content"=>"发布车源"
+    		],
+    		[
+    			"url"=>"/pages/car/car",
+    			"images"=>"../../images/desk_publish@2x.png",
+    			"content"=>"发布车源"
+    		],
+    	];
+    }
 }
