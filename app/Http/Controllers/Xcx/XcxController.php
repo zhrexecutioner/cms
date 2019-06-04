@@ -88,7 +88,7 @@ class XcxController extends Controller
 			$arr[$k]['list']=$first;
 			$k=$k+1;
 		}
-		var_dump($arr);
+		var_dump($first);
     }
 
     // public function car_sourcejk(){
