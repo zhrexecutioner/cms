@@ -117,7 +117,7 @@ class XcxController extends Controller
     			]
     		]
     	];
-    	echo json_encode($arr);
+    	var_dump($arr);
     }
  }
 
