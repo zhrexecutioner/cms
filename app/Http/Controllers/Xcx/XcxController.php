@@ -18,10 +18,10 @@ class XcxController extends Controller
     }
 
     public function indexgg(){
-    	$arrImgs = array(
-    		'/images/hd1.png',
-      		'/images/hd2.png'
-    	);
+    	$arrImgs = array[
+    		"image"=['/images/hd1.png'],
+      		"image"=['/images/hd2.png']
+    	];
     	echo json_encode($arrImgs);
     }
 }
