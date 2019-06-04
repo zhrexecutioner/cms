@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use App\Model\XcxModel;
 use App\Model\IndexfuwuModel;
+use App\Model\IndexworkModel;
 
 class XcxController extends Controller
 {
@@ -39,19 +40,8 @@ class XcxController extends Controller
     	echo json_encode($arrImgs);
     }
     public function indexwork(){
-    	$arr=[
-    		[
-    			"url"=>"/pages/car/car",
-    			"images"=>"../../images/desk_publish@2x.png",
-    			"content"=>"发布车源"
-    		],
-    		[
-    			"url"=>"/pages/car/car",
-    			"images"=>"../../images/desk_publish@2x.png",
-    			"content"=>"发布车源"
-    		],
-    	];
-    	echo json_encode($arr);
+    	$first = IndexworkModel::select('url','images','content')->get()->toArray();
+    	echo json_encode($first);
     }
 
     public function indexfuwu(){
@@ -59,21 +49,6 @@ class XcxController extends Controller
     	echo json_encode($first);
     }
 
-    // public function indexfuwu(){
-    // 	$arr=[
-    // 		[
-    // 			"url"=>"/pages/car/car",
-    // 			"images"=>"../../images/home_car_source@2x.png",
-    // 			"content"=>"车源管理"
-    // 		],
-    // 		[
-    // 			"url"=>"/pages/car/car",
-    // 			"images"=>"../../images/home_car_source@2x.png",
-    // 			"content"=>"车源管理"
-    // 		],
-    // 	];
-    // 	echo json_encode($arr);
-    // }
 
     public function car_source(){
     	$first = XcxModel::select('name','image_src')->get()->toArray();
