@@ -224,3 +224,5 @@ Route::any('/indexgg','Xcx\XcxController@indexgg');
 Route::any('/indextitle','Xcx\XcxController@indextitle');
 
 Route::any('/indexwork','Xcx\XcxController@indexwork');
+
+Route::any('/indexfuwu','Xcx\XcxController@indexfuwu');

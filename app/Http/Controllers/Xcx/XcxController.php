@@ -51,4 +51,19 @@ class XcxController extends Controller
     	];
     	echo json_encode($arr);
     }
+    public function indexfuwu(){
+    	$arr=[
+    		[
+    			"url"=>"/pages/car/car",
+    			"images"=>"../../images/home_car_source@2x.png",
+    			"content"=>"车源管理"
+    		],
+    		[
+    			"url"=>"/pages/car/car",
+    			"images"=>"../../images/home_car_source@2x.png",
+    			"content"=>"车源管理"
+    		],
+    	];
+    	echo json_encode($arr);
+    }
 }
