@@ -89,7 +89,7 @@ class XcxController extends Controller
 			$k=$k+1;
 		}
 		//$first=DB::table('brand')->where('brand_first','a')->get()->toArray();
-		var_dump($arr);
+		echo json_encode($arr);
     }
 
     // public function car_sourcejk(){
