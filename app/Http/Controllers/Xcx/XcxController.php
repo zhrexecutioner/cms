@@ -32,7 +32,7 @@ class XcxController extends Controller
 
     public function indextitle(){
     	$arrImgs = array(
-    		'双11返场！！'
+    		"title"=>'双11返场！！'
     	);
     	echo json_encode($arrImgs);
     }
