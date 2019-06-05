@@ -80,7 +80,7 @@ class XcxController extends Controller
 
     public function formSubmit(Request $request){
     	$log=$request->input('log');
-    	var_dump($log);exit;
+    	//var_dump($log);exit;
     	return $log;
     }
  }
