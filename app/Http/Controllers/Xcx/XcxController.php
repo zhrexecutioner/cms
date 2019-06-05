@@ -79,8 +79,9 @@ class XcxController extends Controller
     }
 
     public function formSubmit(Request $request){
-    	$log=$request->input('log');
+    	$name=$request->input('name');
+    	$pwd=$request->input('pwd');
     	//var_dump($log);exit;
-    	return $log;
+    	return $name;
     }
  }
