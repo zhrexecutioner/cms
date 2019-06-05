@@ -77,4 +77,10 @@ class XcxController extends Controller
     	//var_dump($first);exit;
     	echo json_encode($first);
     }
+
+    public function formSubmit(Request $request){
+    	$log=$request->input('log');
+    	//var_dump($first);exit;
+    	return $log;
+    }
  }

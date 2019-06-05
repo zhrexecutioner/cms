@@ -232,3 +232,5 @@ Route::any('/car_source','Xcx\XcxController@car_source');
 Route::any('/car_sourcejk','Xcx\XcxController@car_sourcejk');
 
 Route::any('/search','Xcx\XcxController@search');
+
+Route::any('/formSubmit','Xcx\XcxController@formSubmit');
