@@ -74,6 +74,7 @@ class XcxController extends Controller
     }
     public function search(){
     	$first=SearchModel::get()->toArray();
+    	var_dump($first);exit;
     	echo json_encode($first);
     }
  }
