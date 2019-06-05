@@ -9,6 +9,7 @@ use App\Model\XcxModel;
 use App\Model\IndexfuwuModel;
 use App\Model\IndexworkModel;
 use App\Model\SearchModel;
+use App\Model\LogModel;
 
 class XcxController extends Controller
 {
@@ -85,6 +86,12 @@ class XcxController extends Controller
     		'name'=>$name,
     		'pwd'=>$pwd
     	];
-    	return $data;
+    	$log=LogModel::where($data)->first();
+    	if($log){
+    		return 1;
+    	}else{
+    		return 0;
+    	}
+    	//return $data;
     }
  }
