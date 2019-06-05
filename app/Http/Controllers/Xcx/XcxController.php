@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Model\XcxModel;
 use App\Model\IndexfuwuModel;
 use App\Model\IndexworkModel;
+use App\Model\SearchModel;
 
 class XcxController extends Controller
 {
@@ -51,7 +52,7 @@ class XcxController extends Controller
 
 
     public function car_source(){
-    	$first = XcxModel::select('name','image_src')->get()->toArray();
+    	$first = XcxModel::select('name','image_src')->limit(10)->get()->toArray();
     	echo json_encode($first);
     }
 
@@ -71,65 +72,8 @@ class XcxController extends Controller
 		}
 		echo json_encode($arr);
     }
-
-    // public function car_sourcejk(){
-    // 	$arr=[
-    // 		[
-    // 			"alpha"=>'bbb',
-    // 			"list"=>[
-    // 				[
-    // 					"image_src"=>'',
-    // 					"name"=>'nnn'
-    // 				],
-    // 				[
-    // 					"image_src"=>'',
-    // 					"name"=>'kkk'
-    // 				]
-    // 			]
-    // 		],
-    // 		[
-    // 			"alpha"=>'bbb',
-    // 			"list"=>[
-    // 				[
-    // 					"image_src"=>'',
-    // 					"name"=>'nnn'
-    // 				],
-    // 				[
-    // 					"image_src"=>'',
-    // 					"name"=>'kkk'
-    // 				]
-    // 			]
-    // 		]
-    // 	];
-    // 	var_dump($arr);
-    // }
+    public function search(){
+    	$first=SearchModel::get()->toArray();
+    	echo json_encode($first);
+    }
  }
-
-// commonCar:[
-//       {
-//         alpha:'bbb',
-//         list:[
-//           {
-//             image_src:'',
-//             name:'nnn'
-//           },
-//           {
-//             image_src: '',
-//             name: 'kkk'
-//           }
-//         ],
-//       },
-//       {
-//         alpha: 'mmm',
-//         list: [
-//           {
-//             image_src: '',
-//             name: 'nnn'
-//           },
-//           {
-//             image_src: '',
-//             name: 'kkk'
-//           }
-//         ],
-//       }
-//     ],
